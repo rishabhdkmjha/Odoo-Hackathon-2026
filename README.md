@@ -10,8 +10,8 @@ audit visibility, and a maintenance workflow, instead of chasing this in spreads
 
 | Area | Owner |
 |---|---|
-| Backend (API, DB, auth, business logic) | Rishabh |
-| Frontend | *(add teammates here)* |
+| Backend (API, DB, auth, business logic) | Rishabh Jha |
+| Frontend | Abhinav Gupta |
 
 ## Tech Stack
 
