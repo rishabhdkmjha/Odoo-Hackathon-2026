@@ -1,0 +1,11 @@
+{
+  "token": "mock-jwt-token-af-2026",
+  "user": {
+    "id": "EMP-1042",
+    "name": "Ananya Rao",
+    "email": "ananya.rao@assetflow.io",
+    "role": "asset_manager",
+    "department": "IT Infrastructure",
+    "avatarInitials": "AR"
+  }
+}

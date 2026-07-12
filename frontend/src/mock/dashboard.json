@@ -1,0 +1,87 @@
+{
+  "kpis": {
+    "assetsAvailable": 214,
+    "assetsAllocated": 386,
+    "maintenanceToday": 7,
+    "activeBookings": 12,
+    "pendingTransfers": 4,
+    "upcomingReturns": 9
+  },
+  "kpiTrends": {
+    "assetsAvailable": 3.2,
+    "assetsAllocated": -1.4,
+    "maintenanceToday": 0,
+    "activeBookings": 5.8,
+    "pendingTransfers": -2.1,
+    "upcomingReturns": 1.1
+  },
+  "utilizationTrend": [
+    { "month": "Feb", "allocated": 320, "available": 260 },
+    { "month": "Mar", "allocated": 338, "available": 245 },
+    { "month": "Apr", "allocated": 351, "available": 231 },
+    { "month": "May", "allocated": 362, "available": 222 },
+    { "month": "Jun", "allocated": 374, "available": 218 },
+    { "month": "Jul", "allocated": 386, "available": 214 }
+  ],
+  "assetStatusBreakdown": [
+    { "status": "Available", "count": 214 },
+    { "status": "Allocated", "count": 386 },
+    { "status": "Reserved", "count": 41 },
+    { "status": "Under Maintenance", "count": 18 },
+    { "status": "Lost", "count": 3 },
+    { "status": "Retired", "count": 22 }
+  ],
+  "overdueReturns": [
+    {
+      "id": "AF-0114",
+      "assetName": "Dell Latitude 5440",
+      "holder": "Priya Menon",
+      "department": "Finance",
+      "expectedReturnDate": "2026-07-05",
+      "daysOverdue": 7
+    },
+    {
+      "id": "AF-0287",
+      "assetName": "Projector - Epson EB-X06",
+      "holder": "Rahul Iyer",
+      "department": "Marketing",
+      "expectedReturnDate": "2026-07-08",
+      "daysOverdue": 4
+    },
+    {
+      "id": "AF-0356",
+      "assetName": "Company Vehicle - Innova KA05",
+      "holder": "Fleet Pool",
+      "department": "Operations",
+      "expectedReturnDate": "2026-07-10",
+      "daysOverdue": 2
+    }
+  ],
+  "upcomingReturnsList": [
+    {
+      "id": "AF-0421",
+      "assetName": "MacBook Pro 14\"",
+      "holder": "Sana Sheikh",
+      "department": "Design",
+      "expectedReturnDate": "2026-07-15"
+    },
+    {
+      "id": "AF-0198",
+      "assetName": "Conference Room Mic Kit",
+      "holder": "Dev Kapoor",
+      "department": "Sales",
+      "expectedReturnDate": "2026-07-16"
+    }
+  ],
+  "quickActions": [
+    { "id": "register-asset", "label": "Register Asset", "icon": "package-plus" },
+    { "id": "book-resource", "label": "Book Resource", "icon": "calendar-plus" },
+    { "id": "raise-maintenance", "label": "Raise Maintenance Request", "icon": "wrench" }
+  ],
+  "recentActivity": [
+    { "id": 1, "message": "Maintenance approved for AF-0092 (HP LaserJet Pro)", "actor": "Karan Mehta", "time": "12 min ago" },
+    { "id": 2, "message": "Room B2 booked by Sales team for 3:00 PM - 4:00 PM", "actor": "Dev Kapoor", "time": "45 min ago" },
+    { "id": 3, "message": "Transfer approved: AF-0114 reassigned to pending queue", "actor": "Ananya Rao", "time": "1 hr ago" },
+    { "id": 4, "message": "Audit cycle 'Q3 Bangalore Office' closed with 2 discrepancies", "actor": "System", "time": "3 hr ago" }
+  ]
+}
