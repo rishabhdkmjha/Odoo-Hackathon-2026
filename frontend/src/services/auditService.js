@@ -1,6 +1,9 @@
 import api from './api';
 import { mockResolve } from '../utils/mockAdapter';
 
+// NOT IMPLEMENTED on the backend at all - the Audit Cycle module (Screen 8)
+// was out of scope for the hackathon build. Everything here stays mocked.
+// Don't wire this page into the live demo.
 const USE_MOCK = true;
 
 // GET /audits

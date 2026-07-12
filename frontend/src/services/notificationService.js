@@ -1,18 +1,15 @@
 import api from './api';
 import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /notifications
-export const getNotifications = async () => {
-  if (USE_MOCK) return mockResolve([], 300);
-  const { data } = await api.get('/notifications');
-  return data;
+// GET /notifications?unreadOnly=true
+export const getNotifications = async (unreadOnly = false) => {
+  const { data } = await api.get('/notifications', { params: { unreadOnly } });
+  return data.data;
 };
 
-// PUT /notifications/:id/read
+// NOT IMPLEMENTED on the backend yet (no mark-as-read endpoint exists).
+// Kept mocked so the UI doesn't 404 - ask backend to add PUT
+// /notifications/:id/read, then wire this for real.
 export const markNotificationRead = async (id) => {
-  if (USE_MOCK) return mockResolve({ message: 'Marked as read.' }, 200);
-  const { data } = await api.put(`/notifications/${id}/read`);
-  return data;
+  return mockResolve({ id, isRead: true, message: 'Marked as read (mock - backend endpoint pending).' }, 200);
 };

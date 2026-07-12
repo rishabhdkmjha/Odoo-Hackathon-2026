@@ -1,18 +1,27 @@
 import api from './api';
-import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /employees?search=&department=&role=&status=
+// GET /employees?departmentId=&role=
 export const getEmployees = async (params = {}) => {
-  if (USE_MOCK) return mockResolve([], 300);
   const { data } = await api.get('/employees', { params });
-  return data;
+  return data.data;
 };
 
-// POST /employees  (admin promotes/creates Department Head or Asset Manager here)
-export const createOrUpdateEmployeeRole = async (payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Employee updated.' }, 300);
+// POST /employees  (admin directly creates a new employee account)
+export const createEmployee = async (payload) => {
   const { data } = await api.post('/employees', payload);
-  return data;
+  return data.data;
+};
+
+// PUT /employees/:id
+// This is the ONLY place role promotion happens (e.g. Employee -> Asset
+// Manager / Department Head). Pass { role: 'asset_manager' } etc.
+export const updateEmployee = async (id, payload) => {
+  const { data } = await api.put(`/employees/${id}`, payload);
+  return data.data;
+};
+
+// DELETE /employees/:id
+export const deleteEmployee = async (id) => {
+  const { data } = await api.delete(`/employees/${id}`);
+  return data.data;
 };

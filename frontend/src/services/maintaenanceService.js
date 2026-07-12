@@ -1,25 +1,25 @@
 import api from './api';
-import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /maintenance?status=&priority=&assetId=
+// GET /maintenance?assetId=&status=
+// Note: the backend does not support filtering by priority server-side -
+// filter that client-side if needed.
 export const getMaintenanceRequests = async (params = {}) => {
-  if (USE_MOCK) return mockResolve([], 300);
   const { data } = await api.get('/maintenance', { params });
-  return data;
+  return data.data;
 };
 
-// POST /maintenance  { assetId, issue, priority, photo }
+// POST /maintenance  { assetId, issueDescription, priority, photoUrl }
+// priority must be one of: low | medium | high | critical
 export const raiseMaintenanceRequest = async (payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Maintenance request raised.' }, 300);
   const { data } = await api.post('/maintenance', payload);
-  return data;
+  return data.data;
 };
 
-// PUT /maintenance/:id/status  { status: 'Approved' | 'Rejected' | 'In Progress' | 'Resolved', technicianId? }
+// PUT /maintenance/:id  { status, technicianName?, resolutionNotes? }
+// status must be one of: pending | approved | rejected | technician_assigned
+// | in_progress | resolved, and must follow that exact forward order - the
+// backend rejects illegal jumps (e.g. pending -> resolved) with a 409.
 export const updateMaintenanceStatus = async (id, payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Maintenance status updated.' }, 300);
-  const { data } = await api.put(`/maintenance/${id}/status`, payload);
-  return data;
+  const { data } = await api.put(`/maintenance/${id}`, payload);
+  return data.data;
 };

@@ -1,18 +1,13 @@
 import api from './api';
-import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /asset-categories
+// GET /categories  (backend path is /categories, not /asset-categories)
 export const getAssetCategories = async () => {
-  if (USE_MOCK) return mockResolve([], 300);
-  const { data } = await api.get('/asset-categories');
-  return data;
+  const { data } = await api.get('/categories');
+  return data.data;
 };
 
-// POST /asset-categories
+// POST /categories
 export const createAssetCategory = async (payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Category created.' }, 300);
-  const { data } = await api.post('/asset-categories', payload);
-  return data;
+  const { data } = await api.post('/categories', payload);
+  return data.data;
 };

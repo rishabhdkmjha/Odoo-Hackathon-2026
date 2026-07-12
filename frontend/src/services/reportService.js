@@ -1,11 +1,11 @@
 import api from './api';
-import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /reports?type=utilization|maintenance|allocation|booking-heatmap
-export const getReport = async (type, params = {}) => {
-  if (USE_MOCK) return mockResolve({ type, data: [] }, 300);
-  const { data } = await api.get('/reports', { params: { type, ...params } });
-  return data;
+// GET /reports
+// Returns everything at once: { assetUtilization, maintenanceFrequencyByCategory,
+// departmentAllocationSummary, bookingHeatmapByHour }. The backend does not
+// support a `type` filter param - fetch once and pick the section(s) you need
+// on the frontend.
+export const getReports = async () => {
+  const { data } = await api.get('/reports');
+  return data.data;
 };

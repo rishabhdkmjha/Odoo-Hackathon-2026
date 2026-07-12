@@ -1,39 +1,33 @@
 import api from './api';
-import { mockResolve } from '../utils/mockAdapter';
 
-const USE_MOCK = true;
-
-// GET /assets?search=&category=&status=&department=&location=
+// GET /assets?search=&categoryId=&status=&departmentId=&location=
 export const getAssets = async (params = {}) => {
-  if (USE_MOCK) return mockResolve([], 300);
   const { data } = await api.get('/assets', { params });
-  return data;
+  return data.data;
 };
 
-// GET /assets/:id  (includes allocation + maintenance history)
-export const getAssetById = async (id) => {
-  if (USE_MOCK) return mockResolve(null, 300);
-  const { data } = await api.get(`/assets/${id}`);
-  return data;
+// GET /assets/:id/history  (allocation + maintenance history for one asset)
+// Note: the backend has no single-asset GET /assets/:id. If you need the
+// asset's own fields (not just history), filter the result of getAssets().
+export const getAssetHistory = async (id) => {
+  const { data } = await api.get(`/assets/${id}/history`);
+  return data.data;
 };
 
 // POST /assets
 export const createAsset = async (payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Asset registered.' }, 300);
   const { data } = await api.post('/assets', payload);
-  return data;
+  return data.data;
 };
 
 // PUT /assets/:id
 export const updateAsset = async (id, payload) => {
-  if (USE_MOCK) return mockResolve({ message: 'Asset updated.' }, 300);
   const { data } = await api.put(`/assets/${id}`, payload);
-  return data;
+  return data.data;
 };
 
 // DELETE /assets/:id
 export const deleteAsset = async (id) => {
-  if (USE_MOCK) return mockResolve({ message: 'Asset removed.' }, 300);
   const { data } = await api.delete(`/assets/${id}`);
-  return data;
+  return data.data;
 };
